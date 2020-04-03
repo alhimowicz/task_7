@@ -16,7 +16,7 @@ class StacksController < ApplicationController
     end
 
     def create
-        @stack = Stack.new(stacks_params)
+        @stack = Stack.new(create_params)
         
         if @stack.save
             redirect_to @stack
@@ -28,7 +28,7 @@ class StacksController < ApplicationController
     def update
         @stack = Stack.find params[:id]
 
-        if @stack.update stacks_params
+        if @stack.update update_params
             redirect_to @stack
         else
             render 'edit'
@@ -43,7 +43,11 @@ class StacksController < ApplicationController
     end
 
     private
-        def stacks_params
-            params.require(:stack).permit(:title, :user,  {images: []})
+        def create_params
+            params.require(:stack).permit(:tilte, :user,  {images: []})
+        end
+        
+        def update_params
+            params.require(:stack).permit(:tilte, :rate)
         end
 end

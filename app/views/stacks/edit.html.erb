@@ -1,3 +1,5 @@
+<h1>Edit stack</h1>
+
 <%= form_with model: @stack, local: true do |form| %>
 
   <% if @stack.errors.any? %>
@@ -20,13 +22,10 @@
   </p>
 
   <p>
-    <%= form.label :user %><br>
-    <%= form.text_field :user %>
-  </p>
-
-  <p>
-    <%= form.label "Attach images" %><br>
-    <%= form.file_field :images,  multiple: true %>
+    <% @stack.images.each do |item| %>
+      <br><%= link_to(image_tag(item.medium.url, alt: 'Image'), item.url, target: '_blank') %>
+      <%= number_field(:rates, nil, in: 1...11) %>
+    <% end %>
   </p>
   
   <p>
@@ -34,3 +33,5 @@
   </p>
 
 <% end %>
+
+<%= link_to 'Back', stacks_path %>

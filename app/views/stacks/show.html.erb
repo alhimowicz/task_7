@@ -1,0 +1,24 @@
+<p>
+  <strong>Title:</strong>
+  <%= @stack.tilte %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @stack.user %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= @stack.rate %>
+</p>
+
+<p>
+  <strong>Images:</strong>
+  <% @stack.images.each do |item| %>
+    <br><%= link_to(image_tag(item.medium.url, alt: 'Image'), item.url, target: '_blank') %> 
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_stack_path(@stack) %> |
+<%= link_to 'Back', stacks_path %>
