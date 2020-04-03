@@ -24,7 +24,7 @@
   <p>
     <% @stack.images.each do |item| %>
       <br><%= link_to(image_tag(item.medium.url, alt: 'Image'), item.url, target: '_blank') %>
-      <%= number_field(:rates, nil, in: 1...11) %>
+      <%= number_field(:rates, nil, in: 1...11, :value => 1) if @stack.rate == nil %>
     <% end %>
   </p>
   
